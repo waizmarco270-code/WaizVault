@@ -1,0 +1,47 @@
+{
+  "name": "waizvault",
+  "version": "1.0.0",
+  "description": "WaizVault - Premium Educational Platform for Classes 10, 11, 12 & JEE Students",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "build": "echo 'No build step required - serving static files'",
+    "test": "echo 'Tests not implemented yet'",
+    "deploy": "echo 'Ready for Vercel deployment'"
+  },
+  "keywords": [
+    "education",
+    "jee",
+    "class-10",
+    "class-11", 
+    "class-12",
+    "study-materials",
+    "online-learning",
+    "waiz-bhaiya"
+  ],
+  "author": "WaizVault Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "multer": "^1.4.5",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "express-rate-limit": "^6.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/waizvault.git"
+  },
+  "bugs": {
+    "url": "https://github.com/username/waizvault/issues"
+  },
+  "homepage": "https://waizvault.vercel.app"
+}
