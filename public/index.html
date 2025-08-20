@@ -1,58 +1,748 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>WaizVault</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaizVault - Premium Educational Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <nav>
-    <h1 class="rainbow">WaizVault</h1>
-    <ul>
-      <li onclick="showPage('home')">Home</li>
-      <li onclick="showPage('class10')">Class 10</li>
-      <li onclick="showPage('class11jee')">Class 11 + JEE</li>
-      <li onclick="showPage('class12jee')">Class 12 + JEE</li>
-      <li onclick="showPage('admin')">Admin</li>
-      <li onclick="showPage('login')">Login</li>
-    </ul>
-  </nav>
-  <main id="root">
-    <section id="homePage" class="page">
-      <h2>Welcome to WaizVault!</h2>
-      <div id="notices"></div>
-    </section>
-    <section id="class10Page" class="page" style="display:none;">
-      <h2>Class 10 Resources</h2>
-      <p>Study material, 100/100 section, PYQs, sample papers will show.</p>
-    </section>
-    <section id="class11jeePage" class="page" style="display:none;">
-      <h2>Class 11 + JEE Resources</h2>
-    </section>
-    <section id="class12jeePage" class="page" style="display:none;">
-      <h2>Class 12 + JEE Resources</h2>
-    </section>
-    <section id="adminPage" class="page" style="display:none;">
-      <h2>Admin Control Panel</h2>
-      <form id="uploadForm">
-        <input type="file" name="file" />
-        <button type="submit">Upload File</button>
-      </form>
-      <form id="noticeForm">
-        <input type="text" name="message" placeholder="Enter notice..." />
-        <button type="submit">Send Notice</button>
-      </form>
-      <div id="uploadResult"></div>
-      <div id="noticeResult"></div>
-    </section>
-    <section id="loginPage" class="page" style="display:none;">
-      <h2>Login (Demo only)</h2>
-      <input type="text" placeholder="username (demo)">
-      <input type="password" placeholder="password (demo)">
-      <button>Login</button>
-    </section>
-  </main>
-  <script src="script.js"></script>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>WaizVault</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link" data-page="home">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#class10" class="nav-link" data-page="class10">
+                        <i class="fas fa-book"></i>
+                        <span>Class 10</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#class11" class="nav-link" data-page="class11">
+                        <i class="fas fa-atom"></i>
+                        <span>Class 11 + JEE</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#class12" class="nav-link" data-page="class12">
+                        <i class="fas fa-rocket"></i>
+                        <span>Class 12 + JEE</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#admin" class="nav-link" data-page="admin">
+                        <i class="fas fa-cog"></i>
+                        <span>Admin</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#login" class="nav-link" data-page="login">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Login</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div class="main-container">
+        
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">
+                            Welcome to <span class="gradient-text">WaizVault</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            Your Ultimate Educational Companion for Classes 10, 11, 12 & JEE Preparation
+                        </p>
+                        <div class="hero-buttons">
+                            <button class="btn btn-primary" onclick="scrollToSection('features')">
+                                <i class="fas fa-rocket"></i>
+                                Explore Now
+                            </button>
+                            <button class="btn btn-secondary" onclick="showPage('login')">
+                                <i class="fas fa-sign-in-alt"></i>
+                                Get Started
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hero-animation">
+                        <div class="floating-elements">
+                            <div class="element element-1"><i class="fas fa-atom"></i></div>
+                            <div class="element element-2"><i class="fas fa-calculator"></i></div>
+                            <div class="element element-3"><i class="fas fa-flask"></i></div>
+                            <div class="element element-4"><i class="fas fa-dna"></i></div>
+                            <div class="element element-5"><i class="fas fa-globe"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Announcements Section -->
+            <div class="announcements-section" id="announcements">
+                <div class="container">
+                    <h2 class="section-title">
+                        <i class="fas fa-bullhorn"></i>
+                        Latest Announcements
+                    </h2>
+                    <div class="announcement-ticker">
+                        <div class="ticker-content">
+                            <span>🎉 New JEE 2025 Study Materials Added!</span>
+                            <span>📚 Class 12 Board Exam Special Notes Available</span>
+                            <span>🔥 Waiz Bhaiya's Top 30 Resources Updated</span>
+                            <span>💡 Free Mock Tests for All Classes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="features-section" id="features">
+                <div class="container">
+                    <h2 class="section-title">Why Choose WaizVault?</h2>
+                    <div class="features-grid">
+                        <div class="feature-card" data-page="class10">
+                            <div class="feature-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h3>Class 10</h3>
+                            <p>Complete study materials for Science, Maths, and Social Studies with PYQs and sample papers</p>
+                            <div class="feature-stats">
+                                <span><i class="fas fa-file-pdf"></i> 500+ PDFs</span>
+                                <span><i class="fas fa-video"></i> Video Lectures</span>
+                            </div>
+                        </div>
+
+                        <div class="feature-card" data-page="class11">
+                            <div class="feature-icon">
+                                <i class="fas fa-atom"></i>
+                            </div>
+                            <h3>Class 11 + JEE</h3>
+                            <p>Foundation building with comprehensive notes, JEE materials, and preparation roadmap</p>
+                            <div class="feature-stats">
+                                <span><i class="fas fa-road"></i> Roadmap</span>
+                                <span><i class="fas fa-star"></i> Premium Content</span>
+                            </div>
+                        </div>
+
+                        <div class="feature-card" data-page="class12">
+                            <div class="feature-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h3>Class 12 + JEE</h3>
+                            <p>Advanced preparation with board exam notes, JEE materials, and exclusive locked content</p>
+                            <div class="feature-stats">
+                                <span><i class="fas fa-lock"></i> Exclusive</span>
+                                <span><i class="fas fa-trophy"></i> Success Rate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- App Description -->
+            <div class="description-section">
+                <div class="container">
+                    <div class="description-content">
+                        <div class="description-text">
+                            <h2>Revolutionizing Education</h2>
+                            <p>WaizVault is more than just a study platform - it's your personal educational vault containing the most comprehensive collection of study materials, carefully curated by Waiz Bhaiya and educational experts.</p>
+                            
+                            <div class="features-list">
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Comprehensive study materials for all subjects</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Exclusive content from Waiz Bhaiya</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Interactive learning with modern UI/UX</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Regular updates and new content</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="description-visual">
+                            <div class="stats-container">
+                                <div class="stat-item">
+                                    <div class="stat-number" data-target="10000">0</div>
+                                    <div class="stat-label">Students</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number" data-target="1000">0</div>
+                                    <div class="stat-label">Resources</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number" data-target="99">0</div>
+                                    <div class="stat-label">Success Rate</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Class 10 Page -->
+        <section id="class10" class="page">
+            <div class="page-header">
+                <h1><i class="fas fa-book"></i> Class 10 - Foundation Building</h1>
+                <p>Master your Class 10 subjects with comprehensive study materials</p>
+            </div>
+
+            <!-- Password Protection Notice -->
+            <div class="password-notice">
+                <i class="fas fa-lock"></i>
+                <p>This section is password protected. Please contact admin for access.</p>
+                <button class="btn btn-primary" onclick="showPasswordDialog('class10')">Enter Password</button>
+            </div>
+
+            <div class="class-content" id="class10-content" style="display: none;">
+                <div class="container">
+                    <div class="subjects-grid">
+                        <!-- Science Section -->
+                        <div class="subject-card">
+                            <div class="subject-header">
+                                <i class="fas fa-atom"></i>
+                                <h3>Science</h3>
+                            </div>
+                            <div class="subject-topics">
+                                <div class="topic" data-subject="physics">
+                                    <i class="fas fa-magnet"></i>
+                                    <span>Physics</span>
+                                    <span class="resource-count">50+</span>
+                                </div>
+                                <div class="topic" data-subject="chemistry">
+                                    <i class="fas fa-flask"></i>
+                                    <span>Chemistry</span>
+                                    <span class="resource-count">45+</span>
+                                </div>
+                                <div class="topic" data-subject="biology">
+                                    <i class="fas fa-dna"></i>
+                                    <span>Biology</span>
+                                    <span class="resource-count">40+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mathematics Section -->
+                        <div class="subject-card">
+                            <div class="subject-header">
+                                <i class="fas fa-calculator"></i>
+                                <h3>Mathematics</h3>
+                            </div>
+                            <div class="subject-topics">
+                                <div class="topic">
+                                    <i class="fas fa-square-root-alt"></i>
+                                    <span>All Chapters</span>
+                                    <span class="resource-count">60+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social Studies Section -->
+                        <div class="subject-card">
+                            <div class="subject-header">
+                                <i class="fas fa-globe"></i>
+                                <h3>Social Studies</h3>
+                            </div>
+                            <div class="subject-topics">
+                                <div class="topic">
+                                    <i class="fas fa-landmark"></i>
+                                    <span>History</span>
+                                    <span class="resource-count">30+</span>
+                                </div>
+                                <div class="topic">
+                                    <i class="fas fa-gavel"></i>
+                                    <span>Civics</span>
+                                    <span class="resource-count">25+</span>
+                                </div>
+                                <div class="topic">
+                                    <i class="fas fa-map"></i>
+                                    <span>Geography</span>
+                                    <span class="resource-count">35+</span>
+                                </div>
+                                <div class="topic">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Economics</span>
+                                    <span class="resource-count">20+</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Special Sections -->
+                    <div class="special-sections">
+                        <div class="special-card waiz-special" onclick="showWaizTop30Info()">
+                            <div class="card-header">
+                                <i class="fas fa-crown"></i>
+                                <h3>Waiz Bhaiya Top 30</h3>
+                                <i class="fas fa-info-circle info-icon"></i>
+                            </div>
+                            <p>Handpicked top 30 most important resources</p>
+                        </div>
+
+                        <div class="special-card">
+                            <div class="card-header">
+                                <i class="fas fa-file-alt"></i>
+                                <h3>PYQ & Sample Papers</h3>
+                            </div>
+                            <p>Previous year questions and practice papers</p>
+                        </div>
+
+                        <div class="special-card">
+                            <div class="card-header">
+                                <i class="fas fa-video"></i>
+                                <h3>Video Lectures</h3>
+                            </div>
+                            <p>Coming Soon - Interactive video content</p>
+                        </div>
+
+                        <div class="special-card">
+                            <div class="card-header">
+                                <i class="fas fa-medal"></i>
+                                <h3>100/100 Resources</h3>
+                            </div>
+                            <p>Guaranteed full marks preparation materials</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Class 11 + JEE Page -->
+        <section id="class11" class="page">
+            <div class="page-header">
+                <h1><i class="fas fa-atom"></i> Class 11 + JEE - Foundation & Beyond</h1>
+                <p>Build strong foundations while preparing for JEE</p>
+            </div>
+
+            <div class="container">
+                <div class="jee-sections">
+                    <!-- Short Notes Section -->
+                    <div class="jee-card">
+                        <div class="card-header">
+                            <i class="fas fa-sticky-note"></i>
+                            <h3>Short Notes</h3>
+                            <div class="pricing-tags">
+                                <span class="free-tag">Free</span>
+                                <span class="paid-tag">Premium</span>
+                            </div>
+                        </div>
+                        <p>Concise notes for quick revision and understanding</p>
+                        <div class="card-actions">
+                            <button class="btn btn-sm btn-secondary">View Free</button>
+                            <button class="btn btn-sm btn-primary">Upgrade Premium</button>
+                        </div>
+                    </div>
+
+                    <!-- JEE Materials Section -->
+                    <div class="jee-card">
+                        <div class="card-header">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h3>JEE Materials</h3>
+                        </div>
+                        <p>Comprehensive JEE preparation resources</p>
+                        <div class="subjects-mini">
+                            <span>Physics</span>
+                            <span>Chemistry</span>
+                            <span>Mathematics</span>
+                        </div>
+                    </div>
+
+                    <!-- Roadmap Section -->
+                    <div class="jee-card">
+                        <div class="card-header">
+                            <i class="fas fa-road"></i>
+                            <h3>Roadmap & Prep Tracker</h3>
+                        </div>
+                        <p>Structured preparation plan with progress tracking</p>
+                        <div class="progress-preview">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 35%"></div>
+                            </div>
+                            <span>35% Complete</span>
+                        </div>
+                    </div>
+
+                    <!-- All Books PDFs -->
+                    <div class="jee-card">
+                        <div class="card-header">
+                            <i class="fas fa-book-open"></i>
+                            <h3>All Books PDFs</h3>
+                        </div>
+                        <p>Complete collection of reference books in PDF format</p>
+                        <div class="book-count">500+ Books Available</div>
+                    </div>
+
+                    <!-- Important Lectures -->
+                    <div class="jee-card">
+                        <div class="card-header">
+                            <i class="fas fa-video"></i>
+                            <h3>Most Important Lectures</h3>
+                        </div>
+                        <p>Handpicked video lectures for maximum impact</p>
+                        <div class="lecture-stats">
+                            <span><i class="fas fa-play"></i> 200+ Videos</span>
+                            <span><i class="fas fa-clock"></i> 500+ Hours</span>
+                        </div>
+                    </div>
+
+                    <!-- Locked Premium Content -->
+                    <div class="jee-card locked-card">
+                        <div class="card-header">
+                            <i class="fas fa-lock"></i>
+                            <h3>Waiz Bhaiya IMP 99.99% PDF</h3>
+                            <span class="locked-badge">LOCKED</span>
+                        </div>
+                        <p>Ultra-exclusive content with 99.99% success guarantee</p>
+                        <button class="btn btn-primary" onclick="showUpgradeDialog()">
+                            <i class="fas fa-unlock"></i>
+                            Unlock Premium
+                        </button>
+                    </div>
+
+                    <!-- One Day Before Exam -->
+                    <div class="jee-card">
+                        <div class="card-header">
+                            <i class="fas fa-calendar-day"></i>
+                            <h3>One Day Before Exam</h3>
+                        </div>
+                        <p>Last-minute revision materials and tips</p>
+                        <div class="coming-soon">Coming Soon</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Class 12 + JEE Page -->
+        <section id="class12" class="page">
+            <div class="page-header">
+                <h1><i class="fas fa-rocket"></i> Class 12 + JEE - Final Push</h1>
+                <p>Advanced preparation for boards and JEE success</p>
+            </div>
+
+            <div class="container">
+                <div class="jee-sections">
+                    <!-- Similar structure to Class 11 but with Class 12 specific content -->
+                    <div class="jee-card">
+                        <div class="card-header">
+                            <i class="fas fa-sticky-note"></i>
+                            <h3>Board Exam Special Notes</h3>
+                            <div class="pricing-tags">
+                                <span class="free-tag">Free</span>
+                                <span class="paid-tag">Premium</span>
+                            </div>
+                        </div>
+                        <p>Special notes designed for Class 12 board examinations</p>
+                        <div class="card-actions">
+                            <button class="btn btn-sm btn-secondary">View Free</button>
+                            <button class="btn btn-sm btn-primary">Upgrade Premium</button>
+                        </div>
+                    </div>
+
+                    <div class="jee-card">
+                        <div class="card-header">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h3>JEE Advanced Materials</h3>
+                        </div>
+                        <p>Advanced level JEE preparation resources</p>
+                        <div class="difficulty-indicator">
+                            <span class="diff-hard">Advanced Level</span>
+                        </div>
+                    </div>
+
+                    <div class="jee-card">
+                        <div class="card-header">
+                            <i class="fas fa-road"></i>
+                            <h3>Final Year Roadmap</h3>
+                        </div>
+                        <p>Optimized preparation strategy for final year</p>
+                        <div class="progress-preview">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                            <span>75% Complete</span>
+                        </div>
+                    </div>
+
+                    <div class="jee-card locked-card">
+                        <div class="card-header">
+                            <i class="fas fa-crown"></i>
+                            <h3>Waiz Bhaiya ULTIMATE 99.99%</h3>
+                            <span class="locked-badge">ULTRA LOCKED</span>
+                        </div>
+                        <p>The most exclusive content for guaranteed success</p>
+                        <button class="btn btn-primary" onclick="showUpgradeDialog()">
+                            <i class="fas fa-unlock"></i>
+                            Unlock Ultimate
+                        </button>
+                    </div>
+
+                    <div class="jee-card">
+                        <div class="card-header">
+                            <i class="fas fa-calendar-day"></i>
+                            <h3>One Day Before JEE/Boards</h3>
+                        </div>
+                        <p>Critical last-minute preparation materials</p>
+                        <div class="coming-soon">Coming Soon</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Page -->
+        <section id="admin" class="page">
+            <div class="page-header">
+                <h1><i class="fas fa-cog"></i> Admin Panel</h1>
+                <p>Content management and platform administration</p>
+            </div>
+
+            <div class="admin-login-form">
+                <div class="form-container">
+                    <h2>Admin Access</h2>
+                    <form id="admin-login-form">
+                        <div class="input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="Admin Username" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Admin Password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Access Admin Panel
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Admin Dashboard (Hidden by default) -->
+            <div class="admin-dashboard" id="admin-dashboard" style="display: none;">
+                <div class="container">
+                    <div class="dashboard-grid">
+                        <div class="dashboard-card">
+                            <h3><i class="fas fa-upload"></i> Upload Content</h3>
+                            <p>Upload PDFs, videos, and study materials</p>
+                            <button class="btn btn-secondary">Manage Uploads</button>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <h3><i class="fas fa-users"></i> User Management</h3>
+                            <p>Manage student accounts and permissions</p>
+                            <button class="btn btn-secondary">View Users</button>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <h3><i class="fas fa-chart-bar"></i> Analytics</h3>
+                            <p>Platform usage and performance metrics</p>
+                            <button class="btn btn-secondary">View Reports</button>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <h3><i class="fas fa-bell"></i> Announcements</h3>
+                            <p>Create and manage platform announcements</p>
+                            <button class="btn btn-secondary">Manage Announcements</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Login Page -->
+        <section id="login" class="page">
+            <div class="auth-container">
+                <div class="auth-forms">
+                    <div class="form-toggle">
+                        <button class="toggle-btn active" onclick="showLoginForm()">Login</button>
+                        <button class="toggle-btn" onclick="showSignupForm()">Sign Up</button>
+                    </div>
+
+                    <!-- Login Form -->
+                    <form class="auth-form" id="login-form">
+                        <h2>Welcome Back!</h2>
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Password" required>
+                        </div>
+                        <div class="form-options">
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                Remember me
+                            </label>
+                            <a href="#" class="forgot-password">Forgot Password?</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Login
+                        </button>
+                    </form>
+
+                    <!-- Signup Form -->
+                    <form class="auth-form" id="signup-form" style="display: none;">
+                        <h2>Join WaizVault!</h2>
+                        <div class="input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="Full Name" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-graduation-cap"></i>
+                            <select required>
+                                <option value="">Select Class</option>
+                                <option value="10">Class 10</option>
+                                <option value="11">Class 11</option>
+                                <option value="12">Class 12</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Password" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Confirm Password" required>
+                        </div>
+                        <div class="form-options">
+                            <label class="checkbox-container">
+                                <input type="checkbox" required>
+                                <span class="checkmark"></span>
+                                I agree to Terms & Conditions
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i>
+                            Create Account
+                        </button>
+                    </form>
+                </div>
+
+                <div class="auth-visual">
+                    <div class="visual-content">
+                        <h3>Join thousands of successful students!</h3>
+                        <div class="success-stats">
+                            <div class="stat">
+                                <div class="stat-number">10,000+</div>
+                                <div class="stat-label">Students</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">98%</div>
+                                <div class="stat-label">Success Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Waiz Top 30 Info Modal -->
+    <div class="modal" id="waiz-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-crown"></i> Waiz Bhaiya Top 30</h3>
+                <button class="modal-close" onclick="closeModal('waiz-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Waiz Bhaiya's Top 30 is a carefully curated collection of the most important and high-yield study materials. These resources are handpicked based on:</p>
+                <ul>
+                    <li>Previous year exam analysis</li>
+                    <li>High-weightage topics</li>
+                    <li>Expert recommendations</li>
+                    <li>Student success feedback</li>
+                </ul>
+                <p><strong>Success Rate:</strong> Students who complete these 30 resources show 95% improvement in their scores!</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closeModal('waiz-modal')">Got it!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Password Dialog -->
+    <div class="modal" id="password-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-lock"></i> Enter Password</h3>
+                <button class="modal-close" onclick="closeModal('password-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <i class="fas fa-key"></i>
+                    <input type="password" id="section-password" placeholder="Enter section password">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="verifyPassword()">Access Section</button>
+                <button class="btn btn-secondary" onclick="closeModal('password-modal')">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upgrade Dialog -->
+    <div class="modal" id="upgrade-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-crown"></i> Upgrade to Premium</h3>
+                <button class="modal-close" onclick="closeModal('upgrade-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Unlock exclusive content and features with WaizVault Premium:</p>
+                <ul>
+                    <li>✨ Waiz Bhaiya's 99.99% guaranteed content</li>
+                    <li>🔓 Access to all locked materials</li>
+                    <li>📱 Mobile app access</li>
+                    <li>🎯 Personalized study plans</li>
+                    <li>💬 Direct mentor support</li>
+                </ul>
+                <div class="pricing">
+                    <div class="price">₹999/month</div>
+                    <div class="price-note">or ₹4999/year (Save 58%)</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary">Upgrade Now</button>
+                <button class="btn btn-secondary" onclick="closeModal('upgrade-modal')">Maybe Later</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
-
-    
